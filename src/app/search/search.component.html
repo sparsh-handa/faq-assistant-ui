@@ -1,0 +1,20 @@
+<div class="p-d-flex p-flex-column p-ai-center p-mt-5 p-px-3">
+    <h2 class="p-mb-3">CHUBB.UI FAQ Assistant</h2>
+    <div class="p-inputgroup p-mb-2" style="max-width: 600px; width: 100%;">
+      <input type="text" pInputText [(ngModel)]="query" placeholder="Search for a component issue...">
+      <button pButton type="button" icon="pi pi-search" label="Search" (click)="searchFAQ()" [disabled]="loading"></button>
+      <button pButton type="button" icon="pi pi-refresh" label="Reset" class="p-button-secondary" (click)="resetSearch()"></button>
+    </div>
+  
+    <p-progressSpinner *ngIf="loading" styleClass="p-mt-3"></p-progressSpinner>
+  
+    <div *ngIf="results.length" class="p-mt-3" style="width: 100%; max-width: 800px;">
+      <p-card *ngFor="let result of results" class="p-mb-3">
+        <ng-template pTemplate="header">
+          <h4>{{ result.title }}</h4>
+        </ng-template>
+        <p>{{ result.body }}</p>
+        <a [href]="result.url" target="_blank">View Discussion</a>
+      </p-card>
+    </div>
+  </div>
