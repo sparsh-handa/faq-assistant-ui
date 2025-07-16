@@ -11,8 +11,11 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputGroupModule } from 'primeng/inputgroup';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { BadgeModule } from 'primeng/badge';
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
         SearchComponent
     ],
@@ -24,5 +27,9 @@ import { InputGroupModule } from 'primeng/inputgroup';
         ButtonModule,
         CardModule,
         ProgressSpinnerModule,
-        InputGroupModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        InputGroupModule,
+        BadgeModule,
+        AutoCompleteModule,
+    ], providers: [provideHttpClient(withInterceptorsFromDi())]
+})
 export class AppModule { }

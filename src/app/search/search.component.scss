@@ -1,0 +1,173 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: #f9fbfd;
+  min-height: 100vh;
+}
+
+.search-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a237e;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.p-inputgroup-addon {
+  background: #e3f2fd;
+  border: 1px solid #cfd8dc;
+  padding: 0.75rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+input.p-inputtext {
+  font-size: 1.1rem;
+  padding: 0.85rem;
+  border-radius: 0 !important;
+}
+
+button.p-button {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+button.p-button-outlined {
+  margin-left: 0.5rem;
+}
+
+.results-container {
+  max-width: 850px;
+  width: 100%;
+}
+.p-button {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.p-button-primary {
+  background-color: #1976d2;
+  border: none;
+  color: white;
+
+  &:hover {
+    background-color: #155fa0;
+    box-shadow: 0 4px 10px rgba(21, 95, 160, 0.2);
+  }
+}
+
+.p-button-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+
+  &:hover {
+    background-color: #cacaca;
+  }
+}
+
+.p-button-outlined {
+  border: 1px solid #ccc;
+  background: white;
+  color: #333;
+
+  &:hover {
+    background: #f4f4f4;
+  }
+}
+
+.p-button-text {
+  color: #1976d2;
+  font-weight: 500;
+
+  &.active-tag {
+    background-color: #e3f2fd;
+    border-radius: 6px;
+  }
+}
+
+.faq-card {
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  background: #fff;
+
+  h3 {
+    color: #0d47a1;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .faq-body {
+    font-size: 1rem;
+    color: #333;
+    padding-top: 0.5rem;
+
+    .view-link {
+      margin-top: 0.75rem;
+      display: inline-block;
+      color: #1565c0;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #0d47a1;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.no-results {
+  font-size: 1.15rem;
+  color: #c62828;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.custom-spinner {
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .search-title {
+    font-size: 1.8rem;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .p-inputgroup {
+    flex-direction: column;
+    width: 100%;
+
+    input,
+    button {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .p-inputgroup-addon {
+      display: none;
+    }
+  }
+
+  .faq-card {
+    padding: 1rem;
+  }
+  
+}

@@ -1,20 +1,45 @@
-<div class="p-d-flex p-flex-column p-ai-center p-mt-5 p-px-3">
-    <h2 class="p-mb-3">CHUBB.UI FAQ Assistant</h2>
-    <div class="p-inputgroup p-mb-2" style="max-width: 600px; width: 100%;">
-      <input type="text" pInputText [(ngModel)]="query" placeholder="Search for a component issue...">
-      <button pButton type="button" icon="pi pi-search" label="Search" (click)="searchFAQ()" [disabled]="loading"></button>
-      <button pButton type="button" icon="pi pi-refresh" label="Reset" class="p-button-secondary" (click)="resetSearch()"></button>
-    </div>
-  
-    <p-progressSpinner *ngIf="loading" styleClass="p-mt-3"></p-progressSpinner>
-  
-    <div *ngIf="results.length" class="p-mt-3" style="width: 100%; max-width: 800px;">
-      <p-card *ngFor="let result of results" class="p-mb-3">
-        <ng-template pTemplate="header">
-          <h4>{{ result.title }}</h4>
-        </ng-template>
-        <p>{{ result.body }}</p>
-        <a [href]="result.url" target="_blank">View Discussion</a>
-      </p-card>
-    </div>
+<div class="search-container">
+  <h1 class="search-title">CHUBB.UI FAQ Assistant</h1>
+
+  <div class="p-inputgroup search-bar">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-question-circle"></i>
+    </span>
+    <input type="text" pInputText [(ngModel)]="query" placeholder="Search" list="suggestions" />
+    <datalist id="suggestions">
+      <option *ngFor="let suggestion of suggestions" [value]="suggestion"></option>
+    </datalist>
+    <button pButton type="button" icon="pi pi-search" class="p-button-primary" (click)="searchFAQ()" [disabled]="loading">Search</button>
+    <button pButton type="button" icon="pi pi-times" class="p-button-outlined p-button-secondary" (click)="resetSearch()">Reset</button>
   </div>
+
+  <p-progressSpinner *ngIf="loading" styleClass="custom-spinner"></p-progressSpinner>
+
+  <div *ngIf="noResults && !loading" class="no-results">
+    <i class="pi pi-info-circle"></i> No results found for "<strong>{{ query }}</strong>"
+  </div>
+
+  <div *ngIf="results.length" class="results-container">
+    <div class="tag-filters">
+      <button pButton *ngFor="let tag of getUniqueTags()" (click)="filterByTag(tag)" [label]="tag" class="p-button-text" [class.active-tag]="tag === selectedTag"></button>
+    </div>
+
+    <p-card *ngFor="let result of results" class="faq-card">
+      <ng-template pTemplate="header">
+        <h3>{{ result.title }}</h3>
+      </ng-template>
+
+      <div class="faq-body">
+        <p>{{ result.body | slice:0:300 }}...</p>
+        <div class="tags" *ngIf="result.tags">
+          <p-badge *ngFor="let tag of result.tags" [value]="tag" class="faq-tag"></p-badge>
+        </div>
+        <a [href]="result.url" target="_blank" class="view-link">
+          🔗 View Full Discussion
+        </a>
+      </div>
+    </p-card>
+  </div>
+
+ 
+</div>
